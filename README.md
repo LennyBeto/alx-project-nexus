@@ -29,6 +29,7 @@ This repository covers the development of a social media feed backend with the f
 - Comprehensive Documentation: Highlighting real-world challenges and solutions.
 
 ## 🛠️ Major Learnings & Tech Stack
+
 Key Technologies
 - Backend Frameworks: Django
 
@@ -75,3 +76,4 @@ This repository serves as both a personal documentation hub and a collaborative 
 It demonstrates the evolution from mastering core concepts to implementing sophisticated architectural patterns in production systems.
 The journey spans from understanding foundational principles like server architecture, database design, and API development to deploying scalable 
 microservices, implementing distributed systems patterns, and optimizing performance in enterprise environments.
+
