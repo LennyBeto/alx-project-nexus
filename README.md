@@ -37,7 +37,7 @@ A scalable GraphQL-based backend for social media applications built with Django
 1. **Clone the repository**
 ```bash
 git clone <repository-url>
-cd social_media_backend
+cd social_media_feed
 ```
 
 2. **Set up virtual environment**
