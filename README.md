@@ -2,7 +2,7 @@
 
 A scalable GraphQL-based backend for social media applications built with Django and PostgreSQL.
 
-## 🚀 Features
+## 🚀 Features 
 
 - **GraphQL API**: Flexible querying with GraphQL and Graphene-Django
 - **Post Management**: Create, read, update, and delete posts
