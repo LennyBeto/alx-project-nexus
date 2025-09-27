@@ -6,7 +6,7 @@ from django.db.models import Q, Prefetch
 from .models import Post, Comment, Like, Share, Follow
 from .types import UserType, PostType, CommentType, LikeType, ShareType, FollowType
 
-class Query(graphene.ObjectType):
+class Query(graphene.ObjectType): 
     # User queries
     users = graphene.List(UserType)
     user = graphene.Field(UserType, id=graphene.Int(), username=graphene.String())
@@ -130,3 +130,4 @@ class Query(graphene.ObjectType):
     
     def resolve_user_following(self, info, user_id):
         return Follow.objects.select_related('following').filter(follower_id=user_id)
+
