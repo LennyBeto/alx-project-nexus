@@ -261,7 +261,7 @@ git commit -m "docs: update README with API usage"
 ## 🏗 Project Structure
 
 ```
-social_media_backend/
+alx-project-nexus/
 ├── social_media_feed/           # Django project settings
 │   ├── settings.py
 │   ├── urls.py
