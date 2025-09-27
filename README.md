@@ -61,7 +61,7 @@ cp .env.example .env
 5. **Set up database**
 ```bash
 # For PostgreSQL (recommended for production-like testing)
-createdb social_media_db
+createdb social_media_feed_db
 
 # For SQLite (quick setup), uncomment SQLite config in settings.py
 ```
