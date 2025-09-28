@@ -1,4 +1,4 @@
-# Social Media Feed Backend
+# Social Media Feed Backend 
 
 A scalable GraphQL-based backend for social media applications built with Django and PostgreSQL.
 
