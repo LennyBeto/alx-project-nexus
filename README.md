@@ -1,116 +1,145 @@
 # Social Media Feed Backend
 
-A modern, scalable, and feature-rich social media backend API built with Django, offering both GraphQL and REST interfaces. Perfect for building social media applications, community platforms, and content management systems.
+A scalable GraphQL-based backend for social media applications built with Django and PostgreSQL.
 
- ✨ Features
-🔧 Core Functionality
+## 🚀 Features 
 
-📝 Post Management - Create, edit, delete posts with rich content support
-💬 Comment System - Nested comments and replies with threading
-❤️ Like System - Like posts and comments with real-time counters
-🔄 Share System - Share posts with optional custom messages
-👥 Follow System - Follow users and personalized feeds
-👤 User Profiles - Extended profiles with bio, location, and statistics
+- **GraphQL API**: Flexible querying with GraphQL and Graphene-Django
+- **Post Management**: Create, read, update, and delete posts
+- **User Interactions**: Like, comment, and share posts
+- **Social Features**: Follow/unfollow users, personalized feeds
+- **Real-time Data**: Optimized queries for high-traffic applications
+- **Admin Interface**: Django admin for content management
+- **Database Optimization**: Indexed fields and denormalized counters for performance
 
-🎯 API Interfaces
+## 🛠 Technologies Used
 
-🚀 GraphQL API - Flexible querying with GraphQL Playground
-📊 REST API - Full CRUD operations with DRF
-📚 Interactive Documentation - Swagger UI and ReDoc
-🔐 Authentication Ready - JWT and session-based auth
-🌐 CORS Configured - Frontend integration ready
+- **Backend**: Django 4.2.7
+- **Database**: PostgreSQL (production) / SQLite (development)
+- **API**: GraphQL with Graphene-Django
+- **Deployment**: Vercel
+- **Additional**: CORS support, WhiteNoise for static files
 
-⚡ Performance & Scalability
+## 📊 Database Schema
 
-🗃️ Optimized Database - Strategic indexes and denormalized counters
-🧮 Efficient Queries - Prefetch and select_related optimization
-📄 Pagination - Built-in pagination for large datasets
-🗑️ Soft Delete - Data integrity with recoverable deletions
-📊 Real-time Counters - Automatic like/comment/follow counting
+### Models
 
-🛠️ Developer Experience
+- **Post**: User posts with content, images, and interaction counters
+- **Comment**: Comments and replies on posts
+- **Like**: Like system for posts and comments
+- **Share**: Post sharing functionality
+- **Follow**: User following relationships
 
-🎨 Admin Interface - Enhanced Django admin with custom views
-🧪 Sample Data - Management command for realistic test data
-📈 Health Monitoring - Built-in health checks and status endpoints
-🔄 Signal Handlers - Automatic data consistency maintenance
-📝 Comprehensive Logging - Detailed logging and error tracking
+## 🏃‍♂️ Quick Start
 
-🌐 Deployment Ready
+### Local Development
 
-☁️ Vercel Optimized - Production-ready deployment configuration
-🐳 Docker Support - Containerized development and deployment
-🔒 Security Hardened - Production security settings configured
-📦 Static Files - Optimized static file handling with WhiteNoise
+1. **Clone the repository**
+```bash
+git clone <repository-url>
+cd social_media_feed
+```
 
-🏗️ Technology Stack
-ComponentTechnologyPurposeBackend FrameworkDjango 4.2.7Web framework and ORMAPI LayerDjango REST FrameworkREST API endpointsGraphQLGraphene-DjangoGraphQL API implementationDatabasePostgreSQL / SQLiteData persistenceAuthenticationDjango Auth + JWTUser authenticationDocumentationdrf-spectacularOpenAPI/Swagger docsFile HandlingPillow + WhiteNoiseImage processing and static filesCORSdjango-cors-headersCross-origin resource sharingDeploymentVercelCloud deployment platform
-📁 Project Structure
-alx-project-nexus/
-├── 📁 social_media_feed/          # Django project configuration
-│   ├── ⚙️ settings.py             # Django settings with environment support
-│   ├── 🌐 urls.py                 # Main URL routing
-│   └── 🚀 wsgi.py                 # WSGI application
-├── 📁 feed/                       # Main application
-│   ├── 🗃️ models.py               # Database models with optimizations
-│   ├── 🎯 schema.py               # GraphQL schema and queries
-│   ├── 🔄 mutations.py            # GraphQL mutations
-│   ├── 🎨 types.py                # GraphQL type definitions
-│   ├── 📊 serializers.py          # REST API serializers
-│   ├── 🌐 api_views.py            # REST API views
-│   ├── 🔗 urls.py                 # App URL routing
-│   ├── 👨‍💼 admin.py                # Enhanced admin interface
-│   ├── ⚡ signals.py              # Database signal handlers
-│   └── 📁 management/commands/    # Custom management commands
-│       └── 🎭 create_sample_data.py
-├── 📋 requirements.txt            # Python dependencies
-├── ⚙️ .env.example               # Environment configuration template
-├── 🔧 vercel.json                # Vercel deployment config
-├── 🏗️ build_files.sh             # Build script for deployment
-├── 🐳 Dockerfile                 # Docker configuration (optional)
-└── 📖 README.md                  # Project documentation
-
-🚀 Quick Start
-1️⃣ Clone and Setup
-bash# Clone the repository
-git clone https://github.com/LennyBeto/alx-project-nexus.git
-cd alx-project-nexus
-
-# Create virtual environment
+2. **Set up virtual environment**
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-# Install dependencies
+3. **Install dependencies**
+```bash
 pip install -r requirements.txt
-2️⃣ Environment Configuration
-bash# Copy environment template
-cp .env.example .env
+```
 
-# Edit with your settings (essential variables)
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-DATABASE_URL=  # Leave empty for SQLite development
-3️⃣ Database Setup
-bash# Create and apply migrations
+4. **Set up environment variables**
+```bash
+# Create .env file
+cp .env.example .env
+# Edit .env with your database credentials
+```
+
+5. **Set up database**
+```bash
+# For PostgreSQL (recommended for production-like testing)
+createdb social_media_feed_db
+
+# For SQLite (quick setup), uncomment SQLite config in settings.py
+```
+
+6. **Run migrations**
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
 
-# Create superuser for admin access
+7. **Create superuser**
+```bash
 python manage.py createsuperuser
+```
 
-# Generate sample data (optional)
+8. **Create sample data (optional)**
+```bash
 python manage.py create_sample_data --users 10 --posts 50 --comments 100
-4️⃣ Launch Development Server
-bash# Start the development server
-python manage.py runserver
+```
 
-# Server will be available at http://localhost:8000/
-🌍 API Endpoints
-🏠 Main Endpoints
-EndpointDescriptionDocumentation/API information and statusLanding page with links/health/Health check endpointService status/admin/Django admin interfaceContent management
-🎯 GraphQL API
-EndpointDescriptionFeatures/graphql/GraphQL PlaygroundInteractive queries, schema exploration
-graphql# Example: Get posts with author info
+9. **Start development server**
+```bash
+python manage.py runserver
+```
+
+10. **Access GraphQL Playground**
+Visit: `http://localhost:8000/graphql/`
+
+## 🚀 Deployment on Vercel
+
+### Prerequisites
+- Vercel account
+- PostgreSQL database (recommend: Railway, Supabase, or ElephantSQL)
+
+### Steps
+
+1. **Prepare your database**
+   - Create a PostgreSQL database
+   - Note the DATABASE_URL connection string
+
+2. **Deploy to Vercel**
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Login to Vercel
+vercel login
+
+# Deploy
+vercel --prod
+```
+
+3. **Configure environment variables in Vercel**
+   - Go to your Vercel project dashboard
+   - Add these environment variables:
+     - `DATABASE_URL`: Your PostgreSQL connection string
+     - `SECRET_KEY`: Django secret key
+     - `DEBUG`: `False`
+
+4. **Run initial setup**
+   After deployment, run migrations:
+```bash
+# You may need to run these commands via Vercel CLI or database management tool
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py create_sample_data
+```
+
+## 🔍 API Usage
+
+### GraphQL Endpoint
+- **Development**: `http://localhost:8000/graphql/`
+- **Production**: `https://your-app.vercel.app/graphql/`
+
+### Sample Queries
+
+#### Get Posts
+```graphql
 query GetPosts {
   posts(limit: 10) {
     id
@@ -120,356 +149,186 @@ query GetPosts {
     commentsCount
     author {
       username
-      profile {
-        bio
-        followersCount
-      }
+      fullName
     }
-    isLikedByUser
   }
 }
+```
 
-# Example: Create a post
+#### Create Post
+```graphql
 mutation CreatePost {
-  createPost(content: "Hello, GraphQL world!") {
+  createPost(content: "Hello, World!") {
     success
     message
     post {
       id
       content
-      author {
-        username
-      }
+      createdAt
     }
   }
 }
-📊 REST API Endpoints
-MethodEndpointDescriptionAuth RequiredGET/api/posts/List posts with pagination❌POST/api/posts/Create new post✅GET/api/posts/{id}/Get specific post❌PUT/api/posts/{id}/Update post (owner only)✅DELETE/api/posts/{id}/Delete post (owner only)✅POST/api/posts/{id}/like/Toggle like on post✅GET/api/posts/{id}/comments/Get post comments❌POST/api/posts/{id}/comments/Add comment to post✅GET/api/feed/Get personalized feed✅GET/api/trending/Get trending posts❌GET/api/users/List users❌POST/api/users/{id}/follow/Toggle follow user✅GET/api/profile/Get own profile✅PUT/api/profile/Update own profile✅
-📚 API Documentation
-EndpointDescriptionFeatures/api/docs/Swagger UIInteractive API testing/api/redoc/ReDoc documentationClean API reference/api/schema/OpenAPI schemaMachine-readable spec
-🗃️ Database Models
-👤 User & Profile Models
+```
 
-User - Django's built-in user model
-UserProfile - Extended profile (bio, location, avatar, counters)
-
-📝 Content Models
-
-Post - User posts with content, images, engagement counters
-Comment - Comments with nested reply support
-Like - Flexible like system for posts and comments
-Share - Post sharing with optional messages
-Follow - User following relationships
-
-🔢 Key Features
-
-Soft Delete - Recoverable content deletion
-Denormalized Counters - Fast engagement metrics
-Database Indexes - Optimized query performance
-Signal Handlers - Automatic counter maintenance
-Constraints - Data integrity enforcement
-
-🎭 Sample Data
-Generate realistic test data for development:
-bash# Generate sample data with custom parameters
-python manage.py create_sample_data \
-    --users 20 \
-    --posts 100 \
-    --comments 200 \
-    --clear  # Optional: clear existing data
-
-# Quick setup with defaults
-python manage.py create_sample_data
-
-# The command creates:
-# - Users with realistic profiles (names, bios, locations)
-# - Posts with varied content types
-# - Comments and nested replies
-# - Random likes, follows, and shares
-# - Realistic engagement patterns
-🔐 Authentication
-🎫 Available Methods
-
-Session Authentication - Web-based authentication
-Token Authentication - API token-based auth
-JWT Ready - JSON Web Token support configured
-
-🔓 Usage Examples
-REST API with Session Auth:
-bash# Login via Django admin first, then:
-curl -H "Content-Type: application/json" \
-     -X POST \
-     -d '{"content": "My first API post!"}' \
-     http://localhost:8000/api/posts/
-GraphQL with Authentication:
-graphql# After logging in via admin interface
-mutation {
-  createPost(content: "GraphQL post with auth") {
+#### Like Post
+```graphql
+mutation LikePost {
+  likePost(postId: 1) {
     success
     message
-    post {
-      id
-      content
-    }
   }
 }
-🚀 Deployment
-☁️ Vercel Deployment (Recommended)
+```
 
-Prepare Database:
+### Authentication
+Currently, the API uses Django's built-in authentication. For production, consider implementing JWT or session-based authentication.
 
-bash   # Get PostgreSQL database URL from:
-   # - Supabase: https://supabase.com/
-   # - Railway: https://railway.app/
-   # - ElephantSQL: https://www.elephantsql.com/
+## 🔧 Development Commands
 
-Deploy to Vercel:
-
-bash   # Install Vercel CLI
-   npm i -g vercel
-   
-   # Login and deploy
-   vercel login
-   vercel --prod
-
-Set Environment Variables in Vercel Dashboard:
-
-bash   SECRET_KEY=your-production-secret-key
-   DEBUG=False
-   DATABASE_URL=postgresql://user:pass@host:port/db
-   DOMAIN=your-app.vercel.app
-   ALLOWED_HOSTS=your-app.vercel.app
-
-Run Initial Setup:
-
-bash   # After deployment, run migrations via your database management tool
-   python manage.py migrate
-   python manage.py createsuperuser
-   python manage.py create_sample_data  # Optional
-🐳 Docker Deployment
-bash# Build and run with Docker
-docker build -t social-media-api .
-docker run -p 8000:8000 social-media-api
-
-# Or use Docker Compose
-docker-compose up --build
-🌐 Production Checklist
-
-✅ Set DEBUG=False
-✅ Configure secure SECRET_KEY
-✅ Set proper ALLOWED_HOSTS
-✅ Configure production database
-✅ Enable HTTPS settings
-✅ Set restrictive CORS origins
-✅ Configure email backend
-✅ Set up error monitoring (Sentry)
-✅ Configure static file serving
-✅ Set up regular backups
-
-🧪 Testing & Development
-🔍 API Testing
-GraphQL Playground:
-http://localhost:8000/graphql/
-REST API Testing:
-bash# Get posts
-curl http://localhost:8000/api/posts/
-
-# Get API documentation
-curl http://localhost:8000/api/docs/
-
-# Health check
-curl http://localhost:8000/health/
-Interactive Testing:
-
-Swagger UI: http://localhost:8000/api/docs/
-ReDoc: http://localhost:8000/api/redoc/
-Django Admin: http://localhost:8000/admin/
-
-🛠️ Development Commands
-bash# Database operations
+```bash
+# Create migrations
 python manage.py makemigrations
-python manage.py migrate
-python manage.py dbshell
 
-# Create users
+# Apply migrations
+python manage.py migrate
+
+# Create superuser
 python manage.py createsuperuser
+
+# Create sample data
 python manage.py create_sample_data
 
-# Development server
+# Run development server
 python manage.py runserver
-python manage.py runserver 0.0.0.0:8000  # Allow external connections
 
-# Static files
+# Collect static files
 python manage.py collectstatic
-python manage.py findstatic admin/css/base.css
 
-# Shell access
-python manage.py shell
-python manage.py shell_plus  # If django-extensions installed
+# Access Django admin
+# Visit: http://localhost:8000/admin/
+```
 
-# Check configuration
-python manage.py check
-python manage.py check --deploy  # Production readiness
-🎨 Customization
-🔧 Adding New Features
+## 📈 Performance Optimization
 
-Create new models in feed/models.py:
+- **Database Indexes**: Strategic indexes on frequently queried fields
+- **Denormalized Counters**: Likes, comments, and shares counts stored directly on posts
+- **Query Optimization**: Prefetch and select_related for efficient database queries
+- **Pagination**: Built-in pagination for large datasets
 
-python   class NewModel(models.Model):
-       # Your fields here
-       pass
+## 🧪 Testing
 
-Add GraphQL types in feed/types.py:
+Access the GraphQL Playground to test all queries and mutations interactively:
+- Development: `http://localhost:8000/graphql/`
+- Production: Your deployed URL + `/graphql/`
 
-python   class NewModelType(DjangoObjectType):
-       class Meta:
-           model = NewModel
+## 📝 Git Workflow
 
-Create mutations in feed/mutations.py:
+Follow the commit message format:
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `perf:` - Performance improvements
+- `docs:` - Documentation updates
+- `refactor:` - Code refactoring
+- `test:` - Adding tests
 
-python   class CreateNewModel(graphene.Mutation):
-       # Your mutation logic
-       pass
+### Example Commits
+```bash
+git add .
+git commit -m "feat: set up Django project with PostgreSQL"
+git commit -m "feat: create models for posts, comments, and interactions"
+git commit -m "feat: implement GraphQL API for querying posts and interactions"
+git commit -m "feat: integrate and publish GraphQL Playground"
+git commit -m "perf: optimize database queries for interactions"
+git commit -m "docs: update README with API usage"
+```
 
-Add REST serializers in feed/serializers.py:
+## 🔐 Security Considerations
 
-python   class NewModelSerializer(serializers.ModelSerializer):
-       class Meta:
-           model = NewModel
-           fields = '__all__'
-⚙️ Environment Configuration
-The project supports multiple environments:
+- **CORS**: Properly configured for frontend integration
+- **Environment Variables**: Sensitive data stored in environment variables
+- **Database**: Prepared statements prevent SQL injection
+- **Authentication**: Ready for JWT or session-based auth integration
 
-Development: SQLite, debug mode, permissive CORS
-Production: PostgreSQL, security settings, restrictive CORS
-Docker: Container-optimized settings
-Testing: Isolated test database, fast settings
+## 📊 API Endpoints
 
-🤝 Contributing
-We welcome contributions! Here's how to get started:
+| Endpoint | Description |
+|----------|-------------|
+| `/` | API status and information |
+| `/graphql/` | GraphQL API endpoint with Playground |
+| `/admin/` | Django admin interface |
+| `/health/` | Health check endpoint |
 
-Fork the Repository
+## 🏗 Project Structure
 
-bash   git fork https://github.com/LennyBeto/alx-project-nexus.git
+```
+alx-project-nexus/
+├── social_media_feed/           # Django project settings
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── feed/                   # Main application
+│   ├── models.py          # Database models
+│   ├── types.py           # GraphQL types
+│   ├── queries.py         # GraphQL queries
+│   ├── mutations.py       # GraphQL mutations
+│   ├── schema.py          # Main GraphQL schema
+│   ├── admin.py           # Django admin config
+│   └── management/        # Custom management commands
+├── requirements.txt       # Python dependencies
+├── vercel.json           # Vercel deployment config
+├── build_files.sh        # Build script for Vercel
+└── README.md             # This file
+```
 
-Create Feature Branch
+## 🚨 Troubleshooting
 
-bash   git checkout -b feature/amazing-feature
+### Common Issues
 
-Make Changes and Test
+1. **Database Connection Error**
+   - Verify DATABASE_URL in environment variables
+   - Check PostgreSQL server is running
+   - Ensure database exists
 
-bash   python manage.py test
-   python manage.py check
+2. **GraphQL Schema Errors**
+   - Run `python manage.py migrate` to ensure all models are synced
+   - Check for syntax errors in schema files
 
-Commit with Conventional Commits
+3. **Static Files Not Loading**
+   - Run `python manage.py collectstatic`
+   - Verify STATIC_URL and STATIC_ROOT settings
 
-bash   git commit -m "feat: add amazing new feature"
-   git commit -m "fix: resolve authentication issue"
-   git commit -m "docs: update API documentation"
+4. **Vercel Deployment Issues**
+   - Check build logs in Vercel dashboard
+   - Verify all environment variables are set
+   - Ensure PostgreSQL database is accessible from Vercel
 
-Push and Create PR
+## 📚 Additional Resources
 
-bash   git push origin feature/amazing-feature
-📝 Commit Message Format
+- [Django Documentation](https://docs.djangoproject.com/)
+- [GraphQL Documentation](https://graphql.org/learn/)
+- [Graphene-Django Documentation](https://docs.graphene-python.org/projects/django/)
+- [Vercel Documentation](https://vercel.com/docs)
 
-feat: - New features
-fix: - Bug fixes
-docs: - Documentation updates
-style: - Code style changes
-refactor: - Code refactoring
-perf: - Performance improvements
-test: - Adding tests
-chore: - Maintenance tasks
+## 🤝 Contributing
 
-🐛 Troubleshooting
-Common Issues and Solutions
-🔴 ModuleNotFoundError:
-bash# Ensure __init__.py files exist
-touch social_media_feed/__init__.py
-touch feed/__init__.py
-touch feed/management/__init__.py
-touch feed/management/commands/__init__.py
-🔴 Database Connection Error:
-bash# For SQLite (development)
-DATABASE_URL=  # Leave empty in .env
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes and commit: `git commit -m "feat: add new feature"`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request
 
-# For PostgreSQL
-DATABASE_URL=postgresql://user:pass@host:port/db
-🔴 Static Files Not Loading:
-bashpython manage.py collectstatic --noinput
-chmod +x build_files.sh
-./build_files.sh
-🔴 CORS Issues:
-python# In .env file
-CORS_ALLOW_ALL_ORIGINS=True  # Development only
-CORS_ALLOWED_ORIGINS=https://your-frontend.com  # Production
-🔴 Migration Issues:
-bash# Reset migrations (development only)
-rm -rf feed/migrations/
-python manage.py makemigrations feed
-python manage.py migrate
-📊 Performance & Monitoring
-🚀 Performance Features
+## 📄 License
 
-Database Indexing - Strategic indexes on frequently queried fields
-Query Optimization - Prefetch and select_related usage
-Denormalized Counters - Fast engagement metrics
-Pagination - Efficient large dataset handling
-Caching Ready - Redis integration support
-
-📈 Monitoring Endpoints
-
-/health/ - Health check with system status
-/api/ - API information and statistics
-Django Admin - Built-in analytics and user management
-
-🔍 Logging Configuration
-python# Configured log levels and outputs
-# - Console logging for development
-# - File logging for production
-# - Error tracking with Sentry (optional)
-# - Request/response logging
-# - Database query logging (development)
-📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
-🙏 Acknowledgments
 
-Django - The web framework for perfectionists with deadlines
-Django REST Framework - Powerful and flexible toolkit for building Web APIs
-Graphene-Django - GraphQL framework for Django
-PostgreSQL - The world's most advanced open source database
-Vercel - The platform for frontend developers (and full-stack too!)
+## 🆘 Support
 
-📞 Support & Community
+If you encounter any issues or have questions:
+1. Check the troubleshooting section above
+2. Review the GraphQL Playground for API testing
+3. Check the Django admin interface for data management
+4. Open an issue in the repository
 
-📧 Issues: GitHub Issues
-💬 Discussions: GitHub Discussions
-📖 Wiki: Project Wiki
-🐛 Bug Reports: Use GitHub Issues with bug template
-💡 Feature Requests: Use GitHub Issues with feature template
+---
 
-🗺️ Roadmap
-🎯 Version 1.1 (Planned)
-
- WebSocket support for real-time notifications
- Advanced search with full-text search capabilities
- Image upload and processing
- Content moderation system
- Rate limiting and throttling
- Email notifications
-
-🎯 Version 1.2 (Future)
-
- Mobile push notifications
- Advanced analytics and insights
- Content recommendation engine
- Multi-language support
- Advanced privacy controls
- API versioning
-
-
-<div align="center">
-🚀 Ready to build the next great social platform?
-⭐ Star this repository • 🍴 Fork it • 📖 Read the Docs
-Made with ❤️ by LennyBeto
-</div>
+**Happy coding! 🚀**
