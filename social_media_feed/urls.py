@@ -14,15 +14,44 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+# social_media_feed/urls.py 
 from django.contrib import admin
 from django.urls import path, include
-from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from django.conf.urls.static import static
 from graphene_django.views import GraphQLView
-from feed.schema import schema
+from drf_spectacular.views import (
+    SpectacularAPIView, 
+    SpectacularRedocView, 
+    SpectacularSwaggerView
+)
+from feed.api_views import health_check, api_info
 
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
-    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
-    path('', include('feed.urls')),
+    
+    # Health check and API info
+    path('', api_info, name='api_info'),
+    path('health/', health_check, name='health_check'),
+    
+    # GraphQL
+    path('graphql/', GraphQLView.as_view(graphiql=True), name='graphql'),
+    
+    # REST API
+    path('api/', include('feed.urls')),
+    
+    # API Documentation
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Custom error handlers
+handler404 = 'feed.views.custom_404'
+handler500 = 'feed.views.custom_500'
