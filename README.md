@@ -1,6 +1,114 @@
 # Social Media Feed Backend 
 
-A scalable GraphQL-based backend for social media applications built with Django and PostgreSQL.
+This repository captures my major learnings from the ProDev Backend Engineering Program at ALX, and showcases my final project – a Social Media Feed System built with Django and GraphQL.
+
+# 🧑‍💻 Program Learnings
+
+## 🔑 Key Technologies
+
+- Python – core backend programming language
+- Django – web framework with ORM and admin dashboard
+- GraphQL (Graphene-Django) – flexible API querying instead of REST
+- PostgreSQL – production-grade relational database
+- Vercel – serverless deployment platform
+- WhiteNoise – efficient static file serving
+- Environment Variables – secure handling of secrets with .env
+
+## 📚 Important Backend Concepts
+
+- Database Design → modeling users, posts, comments, likes, shares, and follows
+- GraphQL APIs → flexible queries and mutations for social interactions
+- Social Network Architecture → follower relationships and personalized feeds
+- Performance Optimization → denormalized counters, database indexing, query optimization
+- Settings Management → using .env for sensitive configurations
+- Deployment → configuring Django for serverless environments
+
+## ⚡ Challenges & Solutions
+1. GraphQL vs REST Architecture
+
+- Challenge: Transitioning from REST API patterns to GraphQL schema design
+- Solution: Structured types, queries, and mutations using Graphene-Django; leveraged GraphQL Playground for testing
+
+2. Database Performance for Social Features
+
+- Challenge: Counting likes/comments/shares on every query would slow down the feed
+- Solution: Implemented denormalized counters directly on posts, updated via signals
+
+3. Complex Relationship Modeling
+
+- Challenge: Designing self-referencing relationships (users following users) and nested comments
+- Solution: Used foreign keys with proper related_name attributes; implemented parent-child comment structure
+
+4. Vercel Deployment Issues
+
+- Challenge: Build failures with psycopg2 and shell script execution errors
+- Solution: Switched to psycopg2-binary, configured vercel.json for Python 3.9, removed problematic build scripts
+
+5. Sensitive Info in Settings
+
+- Challenge: Database credentials and secret keys exposed in settings.py
+- Solution: Moved all secrets to .env using python-decouple or python-dotenv
+
+6. Static Files on Vercel
+
+- Challenge: Static files not serving properly on serverless deployment
+- Solution: Integrated WhiteNoise middleware for efficient static file handling 
+
+## ✅ Best Practices & Takeaways
+
+1. 🔐 Security
+
+- Always store secrets in .env (never commit to GitHub)
+- Use environment variables for DATABASE_URL, SECRET_KEY, and DEBUG
+- Prepare for JWT authentication in production
+
+2. 🏗️ Architecture
+
+- Keep apps modular (feed app with separate models, types, queries, mutations)
+- Use GraphQL for flexible client queries (reduces over-fetching)
+- Implement custom management commands for sample data generation
+
+3. ⚡ Performance
+
+- Denormalize frequently accessed data (likes_count, comments_count)
+- Add database indexes on fields used in queries and filters
+- Use select_related() and prefetch_related() for query optimization
+- Implement pagination for large datasets
+
+4. 📝 Development Workflow
+
+- Add GraphQL Playground early to visualize and test APIs
+- Use Django admin for quick content management during development
+- Follow consistent commit message format (feat:, fix:, perf:, docs:)
+- Test locally with production-like settings (PostgreSQL over SQLite)
+
+5. 🚀 Deployment
+
+- Test build process locally before deploying
+- Configure CORS for frontend integration
+- Set up health check endpoints for monitoring
+- Use managed PostgreSQL services (Railway, Supabase, Neon)
+
+
+## 🎯 Key Features Implemented
+✅ Post Management – Create, read, update, delete posts with content and images
+✅ User Interactions – Like, comment (with nested replies), and share posts
+✅ Social Features – Follow/unfollow users, personalized feed generation
+✅ GraphQL API – Flexible querying with queries and mutations
+✅ Performance Optimization – Indexed fields, denormalized counters, efficient queries
+✅ Admin Interface – Django admin for content moderation
+✅ Deployment – Production-ready configuration for Vercel
+
+## 📊 Project Impact
+This project demonstrates:
+
+- Scalable Architecture – designed for high-traffic social media applications
+- Modern API Design – GraphQL over traditional REST for flexible data fetching
+- Production Readiness – environment-based configuration, optimized queries, proper error handling
+- Real-world Problem Solving – tackled deployment challenges, performance bottlenecks, and complex data modeling
+
+
+# Final Project: Social Media Feed Backend
 
 ## 🚀 Features 
 
