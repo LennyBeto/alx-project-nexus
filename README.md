@@ -94,7 +94,7 @@ Visit: `http://localhost:8000/graphql/`
 
 ### Prerequisites
 - Vercel account
-- PostgreSQL database (recommend: Railway, Supabase, or ElephantSQL)
+- PostgreSQL database 
 
 ### Steps
 
