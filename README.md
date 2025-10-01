@@ -26,33 +26,33 @@ This repository captures my major learnings from the ProDev Backend Engineering 
 ## ⚡ Challenges & Solutions
 1. GraphQL vs REST Architecture
 
-- Challenge: Transitioning from REST API patterns to GraphQL schema design
-- Solution: Structured types, queries, and mutations using Graphene-Django; leveraged GraphQL Playground for testing
+   - Challenge: Transitioning from REST API patterns to GraphQL schema design
+   - Solution: Structured types, queries, and mutations using Graphene-Django; leveraged GraphQL Playground for testing
 
 2. Database Performance for Social Features
 
-- Challenge: Counting likes/comments/shares on every query would slow down the feed
-- Solution: Implemented denormalized counters directly on posts, updated via signals
+   - Challenge: Counting likes/comments/shares on every query would slow down the feed
+   - Solution: Implemented denormalized counters directly on posts, updated via signals
 
 3. Complex Relationship Modeling
 
-- Challenge: Designing self-referencing relationships (users following users) and nested comments
-- Solution: Used foreign keys with proper related_name attributes; implemented parent-child comment structure
+   - Challenge: Designing self-referencing relationships (users following users) and nested comments
+   - Solution: Used foreign keys with proper related_name attributes; implemented parent-child comment structure
 
 4. Vercel Deployment Issues
 
-- Challenge: Build failures with psycopg2 and shell script execution errors
-- Solution: Switched to psycopg2-binary, configured vercel.json for Python 3.9, removed problematic build scripts
+   - Challenge: Build failures with psycopg2 and shell script execution errors
+   - Solution: Switched to psycopg2-binary, configured vercel.json for Python 3.9, removed problematic build scripts
 
 5. Sensitive Info in Settings
 
-- Challenge: Database credentials and secret keys exposed in settings.py
-- Solution: Moved all secrets to .env using python-decouple or python-dotenv
+   - Challenge: Database credentials and secret keys exposed in settings.py
+   - Solution: Moved all secrets to .env using python-decouple or python-dotenv
 
 6. Static Files on Vercel
 
-- Challenge: Static files not serving properly on serverless deployment
-- Solution: Integrated WhiteNoise middleware for efficient static file handling 
+   - Challenge: Static files not serving properly on serverless deployment
+   - Solution: Integrated WhiteNoise middleware for efficient static file handling 
 
 ## ✅ Best Practices & Takeaways
 
@@ -91,13 +91,14 @@ This repository captures my major learnings from the ProDev Backend Engineering 
 
 
 ## 🎯 Key Features Implemented
-✅ Post Management – Create, read, update, delete posts with content and images
-✅ User Interactions – Like, comment (with nested replies), and share posts
-✅ Social Features – Follow/unfollow users, personalized feed generation
-✅ GraphQL API – Flexible querying with queries and mutations
-✅ Performance Optimization – Indexed fields, denormalized counters, efficient queries
-✅ Admin Interface – Django admin for content moderation
-✅ Deployment – Production-ready configuration for Vercel
+
+- ✅ Post Management – Create, read, update, delete posts with content and images
+- ✅ User Interactions – Like, comment (with nested replies), and share posts
+- ✅ Social Features – Follow/unfollow users, personalized feed generation
+- ✅ GraphQL API – Flexible querying with queries and mutations
+- ✅ Performance Optimization – Indexed fields, denormalized counters, efficient queries
+- ✅ Admin Interface – Django admin for content moderation
+- ✅ Deployment – Production-ready configuration for Vercel
 
 ## 📊 Project Impact
 This project demonstrates:
