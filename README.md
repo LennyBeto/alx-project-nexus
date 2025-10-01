@@ -1,4 +1,4 @@
-# Social Media Feed Backend 
+# Social Media Feed Backend
 
 This repository captures my major learnings from the ProDev Backend Engineering Program at ALX, and showcases my final project – a Social Media Feed System built with Django and GraphQL.
 
@@ -24,6 +24,7 @@ This repository captures my major learnings from the ProDev Backend Engineering 
 - Deployment → configuring Django for serverless environments
 
 ## ⚡ Challenges & Solutions
+
 1. GraphQL vs REST Architecture
 
    - Challenge: Transitioning from REST API patterns to GraphQL schema design
@@ -52,7 +53,7 @@ This repository captures my major learnings from the ProDev Backend Engineering 
 6. Static Files on Vercel
 
    - Challenge: Static files not serving properly on serverless deployment
-   - Solution: Integrated WhiteNoise middleware for efficient static file handling 
+   - Solution: Integrated WhiteNoise middleware for efficient static file handling
 
 ## ✅ Best Practices & Takeaways
 
@@ -89,7 +90,6 @@ This repository captures my major learnings from the ProDev Backend Engineering 
 - Set up health check endpoints for monitoring
 - Use managed PostgreSQL services (Railway, Supabase, Neon)
 
-
 ## 🎯 Key Features Implemented
 
 - ✅ Post Management – Create, read, update, delete posts with content and images
@@ -101,6 +101,7 @@ This repository captures my major learnings from the ProDev Backend Engineering 
 - ✅ Deployment – Production-ready configuration for Vercel
 
 ## 📊 Project Impact
+
 This project demonstrates:
 
 - Scalable Architecture – designed for high-traffic social media applications
@@ -108,10 +109,9 @@ This project demonstrates:
 - Production Readiness – environment-based configuration, optimized queries, proper error handling
 - Real-world Problem Solving – tackled deployment challenges, performance bottlenecks, and complex data modeling
 
-
 # Final Project: Social Media Feed Backend
 
-## 🚀 Features 
+## 🚀 Features
 
 - **GraphQL API**: Flexible querying with GraphQL and Graphene-Django
 - **Post Management**: Create, read, update, and delete posts
@@ -131,6 +131,10 @@ This project demonstrates:
 
 ## 📊 Database Schema
 
+![Database ERD](docs/images/database-erd.jpg)
+
+_Entity Relationship Diagram illustrating the database structure for Social Media Feed Backend_
+
 ### Models
 
 - **Post**: User posts with content, images, and interaction counters
@@ -144,23 +148,27 @@ This project demonstrates:
 ### Local Development
 
 1. **Clone the repository**
+
 ```bash
 git clone <repository-url>
 cd social_media_feed
 ```
 
 2. **Set up virtual environment**
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 3. **Install dependencies**
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. **Set up environment variables**
+
 ```bash
 # Create .env file
 cp .env.example .env
@@ -168,6 +176,7 @@ cp .env.example .env
 ```
 
 5. **Set up database**
+
 ```bash
 # For PostgreSQL (recommended for production-like testing)
 createdb social_media_feed_db
@@ -176,42 +185,49 @@ createdb social_media_feed_db
 ```
 
 6. **Run migrations**
+
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 7. **Create superuser**
+
 ```bash
 python manage.py createsuperuser
 ```
 
 8. **Create sample data (optional)**
+
 ```bash
 python manage.py create_sample_data --users 10 --posts 50 --comments 100
 ```
 
 9. **Start development server**
+
 ```bash
 python manage.py runserver
 ```
 
 10. **Access GraphQL Playground**
-Visit: `http://localhost:8000/graphql/`
+    Visit: `http://localhost:8000/graphql/`
 
 ## 🚀 Deployment on Vercel
 
 ### Prerequisites
+
 - Vercel account
-- PostgreSQL database 
+- PostgreSQL database
 
 ### Steps
 
 1. **Prepare your database**
+
    - Create a PostgreSQL database
    - Note the DATABASE_URL connection string
 
 2. **Deploy to Vercel**
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -224,6 +240,7 @@ vercel --prod
 ```
 
 3. **Configure environment variables in Vercel**
+
    - Go to your Vercel project dashboard
    - Add these environment variables:
      - `DATABASE_URL`: Your PostgreSQL connection string
@@ -232,6 +249,7 @@ vercel --prod
 
 4. **Run initial setup**
    After deployment, run migrations:
+
 ```bash
 # You may need to run these commands via Vercel CLI or database management tool
 python manage.py migrate
@@ -242,12 +260,14 @@ python manage.py create_sample_data
 ## 🔍 API Usage
 
 ### GraphQL Endpoint
+
 - **Development**: `http://localhost:8000/graphql/`
 - **Production**: `https://your-app.vercel.app/graphql/`
 
 ### Sample Queries
 
 #### Get Posts
+
 ```graphql
 query GetPosts {
   posts(limit: 10) {
@@ -265,6 +285,7 @@ query GetPosts {
 ```
 
 #### Create Post
+
 ```graphql
 mutation CreatePost {
   createPost(content: "Hello, World!") {
@@ -280,6 +301,7 @@ mutation CreatePost {
 ```
 
 #### Like Post
+
 ```graphql
 mutation LikePost {
   likePost(postId: 1) {
@@ -290,6 +312,7 @@ mutation LikePost {
 ```
 
 ### Authentication
+
 Currently, the API uses Django's built-in authentication. For production, consider implementing JWT or session-based authentication.
 
 ## 🔧 Development Commands
@@ -327,12 +350,14 @@ python manage.py collectstatic
 ## 🧪 Testing
 
 Access the GraphQL Playground to test all queries and mutations interactively:
+
 - Development: `http://localhost:8000/graphql/`
 - Production: Your deployed URL + `/graphql/`
 
 ## 📝 Git Workflow
 
 Follow the commit message format:
+
 - `feat:` - New features
 - `fix:` - Bug fixes
 - `perf:` - Performance improvements
@@ -341,6 +366,7 @@ Follow the commit message format:
 - `test:` - Adding tests
 
 ### Example Commits
+
 ```bash
 git add .
 git commit -m "feat: set up Django project with PostgreSQL"
@@ -360,12 +386,12 @@ git commit -m "docs: update README with API usage"
 
 ## 📊 API Endpoints
 
-| Endpoint | Description |
-|----------|-------------|
-| `/` | API status and information |
+| Endpoint    | Description                          |
+| ----------- | ------------------------------------ |
+| `/`         | API status and information           |
 | `/graphql/` | GraphQL API endpoint with Playground |
-| `/admin/` | Django admin interface |
-| `/health/` | Health check endpoint |
+| `/admin/`   | Django admin interface               |
+| `/health/`  | Health check endpoint                |
 
 ## 🏗 Project Structure
 
@@ -394,15 +420,18 @@ alx-project-nexus/
 ### Common Issues
 
 1. **Database Connection Error**
+
    - Verify DATABASE_URL in environment variables
    - Check PostgreSQL server is running
    - Ensure database exists
 
 2. **GraphQL Schema Errors**
+
    - Run `python manage.py migrate` to ensure all models are synced
    - Check for syntax errors in schema files
 
 3. **Static Files Not Loading**
+
    - Run `python manage.py collectstatic`
    - Verify STATIC_URL and STATIC_ROOT settings
 
@@ -433,6 +462,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🆘 Support
 
 If you encounter any issues or have questions:
+
 1. Check the troubleshooting section above
 2. Review the GraphQL Playground for API testing
 3. Check the Django admin interface for data management
