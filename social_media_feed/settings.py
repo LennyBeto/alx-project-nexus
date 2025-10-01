@@ -92,9 +92,8 @@ WSGI_APPLICATION = 'social_media_feed.wsgi.application'
 # Database configuration
 DATABASE_URL = config('DATABASE_URL', default=None)
 
+# Use PostgreSQL for production (Vercel)
 if os.environ.get('DATABASE_URL'):
-    
-    # Production database (Vercel)
     DATABASES = {
         'default': dj_database_url.config(
             default=os.environ.get('DATABASE_URL'),
@@ -103,14 +102,13 @@ if os.environ.get('DATABASE_URL'):
         )
     }
 else:
-    # Development database (SQLite)
+    # Fallback to SQLite for local development
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
-    } 
-
+    }
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
