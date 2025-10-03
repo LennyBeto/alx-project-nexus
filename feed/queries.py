@@ -131,3 +131,4 @@ class Query(graphene.ObjectType):
     def resolve_user_following(self, info, user_id):
         return Follow.objects.select_related('following').filter(follower_id=user_id)
 
+
