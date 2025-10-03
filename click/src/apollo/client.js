@@ -8,6 +8,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Platform } from "react-native";
 
 // Your backend GraphQL endpoint
 // Adjust this logic as needed for your environment (e.g., Android emulator, iOS simulator, production)
