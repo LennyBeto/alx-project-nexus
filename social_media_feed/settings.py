@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 # social_media_feed/settings.py
 
-import os
+import os 
 from pathlib import Path
 from decouple import config
 import dj_database_url
