@@ -11,8 +11,6 @@
 
 **A modern, production-ready social media feed application with real-time interactions**
 
-[Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Documentation](#-documentation) • [Contributing](#-contributing)
-
 </div>
 
 ---
