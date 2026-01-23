@@ -1,4 +1,3 @@
-# alx-project-nexus
 
 # Dynamic Social Media Feed
 
