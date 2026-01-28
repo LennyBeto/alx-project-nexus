@@ -2,7 +2,7 @@ import React from "react";
 import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import client from "./graphql/client";
-import { Feed } from "./components/Feed/Feed";
+import { Feed } from "./components/feed/Feed";
 import "./styles/global.css";
 
 function App() {
