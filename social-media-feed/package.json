@@ -1,6 +1,7 @@
 {
   "name": "social-media-feed",
   "main": "expo-router/entry",
+  "description": "A modern, production-ready social media feed application",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
