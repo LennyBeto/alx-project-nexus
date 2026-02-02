@@ -6,7 +6,6 @@
   "dependencies": {
     "@apollo/client": "^3.8.8",
     "@testing-library/jest-dom": "^6.1.5",
-    "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
     "clsx": "^2.0.0",
     "graphql": "^16.8.1",
@@ -14,11 +13,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.0",
     "typescript": "^5.3.3",
     "web-vitals": "^3.5.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.3.1",
     "@types/jest": "^29.5.10",
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.42",
@@ -26,7 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -38,15 +38,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "next build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md}\"",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
-    "test:ci": "CI=true react-scripts test --coverage",
-    "prepare": "husky install"
+    "test:ci": "CI=true react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": [
