@@ -33,5 +33,6 @@
   ],
   "env": {
     "REACT_APP_ENV": "production"
-  }
+  },
+  "installCommand": "npm install --legacy-peer-deps"
 }
