@@ -1,6 +1,8 @@
 {
   "version": 2,
   "name": "social-media-feed",
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "build",
   "builds": [
     {
       "src": "package.json",
