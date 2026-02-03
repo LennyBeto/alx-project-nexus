@@ -9,5 +9,14 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
+  ],
+  "builds": [
+    {
+      "src": "social-media-feed/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
   ]
 }
