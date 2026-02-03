@@ -1,8 +1,13 @@
 {
-  "version": 2,
-  "buildCommand": "npm install && npm run build",
-  "outputDirectory": "build",
-  "env": {
-    "REACT_APP_ENV": "production"
-  }
+  "buildCommand": "cd social-media-feed && npm install && npm run build",
+  "outputDirectory": "social-media-feed/build",
+  "devCommand": "cd social-media-feed && npm start",
+  "installCommand": "cd social-media-feed && npm install",
+  "framework": "create-react-app",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
